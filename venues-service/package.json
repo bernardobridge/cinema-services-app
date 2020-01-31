@@ -1,0 +1,24 @@
+{
+  "name": "venues-service",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js",
+    "db-migrate": "knex migrate:latest --env development",
+    "db-seed": "knex seed:run --env development",
+    "db-drop": "knex migrate:down --env development",
+    "db-prepare": "npm run db-migrate && npm run db-seed",
+    "db-docker-start": "docker build -t docker-venues-db . && docker run -d -p 5434:5432 docker-venues-db"
+  },
+  "author": "Bernardo Guerreiro @bernardobridge",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.19.2",
+    "express": "^4.17.1",
+    "express-promise-router": "^3.0.3",
+    "knex": "^0.20.8",
+    "pg": "^7.17.1"
+  }
+}
