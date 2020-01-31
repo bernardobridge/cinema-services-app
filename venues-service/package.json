@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index.js",
+    "start": "node start.js",
     "db-migrate": "knex migrate:latest --env development",
     "db-seed": "knex seed:run --env development",
     "db-drop": "knex migrate:down --env development",
