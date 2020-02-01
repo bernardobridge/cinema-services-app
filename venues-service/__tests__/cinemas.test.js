@@ -1,5 +1,6 @@
 const app = require('../app');
 const request = require('supertest')(app);
+const nock = require('nock');
 
 describe('GET all cinemas', () => {
     it('should return all cinemas', async () => {
@@ -27,11 +28,18 @@ describe('GET all cinemas', () => {
 describe('GET cinema with cinema_id', () => {
     it('should return the correct cinema with movies array', async () => {
         const cinemaId = '1';
+
+        nock(`${process.env.SCREENINGS_SERVICE_URL}`)
+            .get(`/schedules/${cinemaId}`)
+            .reply(200, [
+                {movie_id: 'sampleMovieId1'},
+                {movie_id: 'sampleMovieId2'},
+            ]);
+
         const res = await request
             .get(`/cinemas/${cinemaId}`)
 
         expect(res.statusCode).toEqual(200);
-        
         expect(res.body).toStrictEqual(
             expect.objectContaining({
                 cinema_id: expect.any(Number),
@@ -39,11 +47,10 @@ describe('GET cinema with cinema_id', () => {
                 city: expect.any(String),
                 is_deluxe: expect.any(Boolean),
             })
-        )
-
+        );
         expect(res.body.movies).toStrictEqual([
-            "1ee1cb09-37b8-429a-8912-c50f144495ca",
-            "e6373c5d-1c51-4b9c-afd9-83201809d703"]
-        )
+            'sampleMovieId1',
+            'sampleMovieId2']
+        );
     });
 })
