@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "NODE_ENV=development jest --runInBand --forceExit --env=node",
     "start": "node start.js",
     "db-migrate": "knex migrate:latest --env development",
     "db-seed": "knex seed:run --env development",
@@ -21,5 +21,9 @@
     "express-promise-router": "^3.0.3",
     "knex": "^0.20.8",
     "pg": "^7.17.1"
+  },
+  "devDependencies": {
+    "jest": "^25.1.0",
+    "supertest": "^4.0.2"
   }
 }
