@@ -4,8 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "NODE_ENV=development jest --runInBand --forceExit --env=node",
     "start": "node start.js",
+    "test": "NODE_ENV=development jest --runInBand --forceExit --env=node",
+    "pact": "NODE_ENV=development jest --runInBand --forceExit --env=node --testRegex \"/*(.pact.js)\"",
     "db-migrate": "knex migrate:latest --env development",
     "db-seed": "knex seed:run --env development",
     "db-drop": "knex migrate:down --env development",
@@ -23,6 +24,7 @@
     "pg": "^7.17.1"
   },
   "devDependencies": {
+    "@pact-foundation/pact": "^9.6.1",
     "jest": "^25.1.0",
     "nock": "^11.7.2",
     "supertest": "^4.0.2"
