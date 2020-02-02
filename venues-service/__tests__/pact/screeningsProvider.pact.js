@@ -7,7 +7,7 @@ describe('GET cinema with cinema_id', () => {
 
     beforeAll(async () => {
         provider = new Pact(providerOptions);
-        request = startTestApp(``); // TO_BE_FILLED
+        request = startTestApp(`http://localhost:${provider.opts.port}`);
 
         await provider.setup();
     })
@@ -21,15 +21,18 @@ describe('GET cinema with cinema_id', () => {
         const cinemaId = '1';
 
         await provider.addInteraction({
-            uponReceiving: '', // TO_BE_FILLED
+            uponReceiving: `a GET request to /schedules/${cinemaId}`,
             withRequest: {
-              method: '', // TO_BE_FILLED
-              path: '', // TO_BE_FILLED
+              method: 'GET',
+              path: `/schedules/${cinemaId}`,
             },
             willRespondWith: {
-              status: , // TO_BE_FILLED
-              headers: { }, // TO_BE_FILLED
-              body: [ ], // TO_BE_FILLED
+              status: 200,
+              headers: { 'Content-Type': 'application/json; charset=utf-8' },
+              body: [
+                {movie_id: 'sampleMovieId1'},
+                {movie_id: 'sampleMovieId2'}
+              ]
             }
           });
 
