@@ -1,4 +1,4 @@
-const { Pact } = require("@pact-foundation/pact");
+const { Pact, Matchers: { like } } = require("@pact-foundation/pact");
 const { providerOptions, startTestApp } = require('./helpers');
 
 describe('GET cinema with cinema_id', () => {
@@ -29,10 +29,10 @@ describe('GET cinema with cinema_id', () => {
             willRespondWith: {
               status: 200,
               headers: { 'Content-Type': 'application/json; charset=utf-8' },
-              body: [
+              body: like([
                 {movie_id: 'sampleMovieId1'},
                 {movie_id: 'sampleMovieId2'}
-              ]
+              ])
             }
           });
 

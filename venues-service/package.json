@@ -7,6 +7,7 @@
     "start": "node start.js",
     "test": "NODE_ENV=development jest --runInBand --forceExit --env=node",
     "pact": "NODE_ENV=development jest --runInBand --forceExit --env=node --testRegex \"/*(.pact.js)\"",
+    "pact:publish": "node ./__tests__/pact/publish.js",
     "db-migrate": "knex migrate:latest --env development",
     "db-seed": "knex seed:run --env development",
     "db-drop": "knex migrate:down --env development",
