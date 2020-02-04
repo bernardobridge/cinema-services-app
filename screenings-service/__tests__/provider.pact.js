@@ -20,6 +20,11 @@ describe('PACT Verification', () => {
             providerBaseUrl: `http://localhost:${process.env.SERVICE_PORT}`,
             providerVersion: '1.0.0',
             publishVerificationResult: true,
+            stateHandlers: {
+                'what should we add here?': async () => {
+                    // What about here?
+                },
+              }
         };
 
         return new Verifier().verifyProvider(opts);

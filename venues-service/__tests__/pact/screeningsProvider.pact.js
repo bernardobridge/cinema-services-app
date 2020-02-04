@@ -18,10 +18,11 @@ describe('GET cinema with cinema_id', () => {
     });
 
     it('should return the correct cinema with movies array', async () => {
-        const cinemaId = '1';
+        const cinemaId = '5';
 
         await provider.addInteraction({
             uponReceiving: `a GET request to /schedules/${cinemaId}`,
+            state: `screenings service has cinema with cinemaId=${cinemaId}`,
             withRequest: {
               method: 'GET',
               path: `/schedules/${cinemaId}`,
