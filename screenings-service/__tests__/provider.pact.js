@@ -1,5 +1,6 @@
 const { Verifier } = require('@pact-foundation/pact');
 const db = require('../db');
+const pkg = require('../package.json');
 
 describe('PACT Verification', () => {
     let app;
@@ -17,7 +18,7 @@ describe('PACT Verification', () => {
             pactBrokerUrl: process.env.PACT_BROKER_URL || 'https://limitless-hamlet-75386.herokuapp.com/',
             pactBrokerUsername: process.env.PACT_BROKER_USERNAME || 'admin',
             pactBrokerPassword: process.env.PACT_BROKER_PASSWORD || 'pacty123',
-            provider: 'Screenings Service',
+            provider: pkg.name,
             providerBaseUrl: `http://localhost:${process.env.SERVICE_PORT}`,
             providerVersion: '1.0.0',
             publishVerificationResult: true,

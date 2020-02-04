@@ -1,8 +1,9 @@
 const path = require('path');
+const pkg = require('../../package.json');
 
 const providerOptions = {
-    consumer: 'Venues Service',
-    provider: 'Screenings Service',
+    consumer: pkg.name,
+    provider: 'screenings-service',
     port: 5001,
     log: path.resolve(__dirname, './logs', 'screenings-pact.log'),
     dir: path.resolve(__dirname, './contracts'),
