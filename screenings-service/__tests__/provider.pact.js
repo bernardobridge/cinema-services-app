@@ -1,4 +1,5 @@
 const { Verifier } = require('@pact-foundation/pact');
+const db = require('../db');
 
 describe('PACT Verification', () => {
     let app;
@@ -21,8 +22,16 @@ describe('PACT Verification', () => {
             providerVersion: '1.0.0',
             publishVerificationResult: true,
             stateHandlers: {
-                'what should we add here?': async () => {
-                    // What about here?
+                'screenings service has cinema with cinemaId=5': async () => {
+                    const schedules = [{
+                        cinema_id: 5,
+                        movie_id: '5aa7b461-c3ab-4c7b-b875-f77ead576309',
+                        start_date: '2020-01-10',
+                        end_date: '2020-03-01',
+                    }]
+
+                    await db('schedules').del();
+                    await db('schedules').insert(schedules);
                 },
               }
         };
