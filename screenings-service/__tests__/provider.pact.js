@@ -26,6 +26,7 @@ describe('PACT Verification', () => {
             providerBaseUrl: `http://localhost:${process.env.SERVICE_PORT}`,
             providerVersion: `${pkg.version}-${process.env.GIT_COMMIT || process.env.CIRCLE_SHA1 || Date.now()}`,
             providerVersionTag: ['master'],
+            consumerVersionTag: (process.env.CONSUMER_TRIGGER) ? [] : ['master'],
             publishVerificationResult: true,
             stateHandlers: {
                 'screenings service has cinema with cinemaId=5': async () => {
