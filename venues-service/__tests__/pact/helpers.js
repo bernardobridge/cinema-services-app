@@ -1,14 +1,15 @@
 const path = require('path');
 const pkg = require('../../package.json');
 
+const part = 'part-4';
+
 const providerOptions = {
-    consumer: pkg.name,
-    provider: 'screenings-service',
+    consumer: `${pkg.name}-${part}`,
+    provider: `screenings-service-${part}`,
     port: 5001,
     log: path.resolve(__dirname, './logs', 'screenings-pact.log'),
     dir: path.resolve(__dirname, './contracts'),
     spec: 2,
-    pactfileWriteMode: 'update',
 };
 
 const startTestApp = (screeningsServiceUrl) => {

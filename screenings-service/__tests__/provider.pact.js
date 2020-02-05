@@ -14,11 +14,13 @@ describe('PACT Verification', () => {
     });
 
     it('should verify expected interactions', () => {
+        const part = 'part-4';
+
         const opts = {
             pactBrokerUrl: process.env.PACT_BROKER_URL || 'https://limitless-hamlet-75386.herokuapp.com/',
             pactBrokerUsername: process.env.PACT_BROKER_USERNAME || 'admin',
             pactBrokerPassword: process.env.PACT_BROKER_PASSWORD || 'pacty123',
-            provider: pkg.name,
+            provider: `${pkg.name}-${part}`,
             providerBaseUrl: `http://localhost:${process.env.SERVICE_PORT}`,
             providerVersion: '1.0.0',
             publishVerificationResult: true,
