@@ -25,7 +25,7 @@ describe('PACT Verification', () => {
             provider: `${pkg.name}-${part}`,
             providerBaseUrl: `http://localhost:${process.env.SERVICE_PORT}`,
             providerVersion: `${pkg.version}-${process.env.GIT_COMMIT || process.env.CIRCLE_SHA1 || Date.now()}`,
-            providerVersionTag: ['implement-consumer-changes'],
+            providerVersionTag: [`${process.env.GIT_BRANCH || process.env.CIRCLE_BRANCH || 'master'}`],
             consumerVersionTag: (process.env.CONSUMER_TRIGGER == true) ? [] : ['master', 'experimental-consumer-branch-1'],
             publishVerificationResult: true,
             stateHandlers: {
