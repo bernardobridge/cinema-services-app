@@ -30,7 +30,7 @@ describe('GET cinema with cinema_id', () => {
             willRespondWith: {
               status: 200,
               headers: { 'Content-Type': 'application/json; charset=utf-8' },
-              body: eachLike({movie_id: 'sampleMovieId1'})
+              body: eachLike({movie_id: 'sampleMovieId1', fakeKey: 'fakeNews'})
             }
           });
 
