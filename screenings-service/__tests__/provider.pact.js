@@ -2,6 +2,8 @@ const { Verifier } = require('@pact-foundation/pact');
 const db = require('../db');
 const pkg = require('../package.json');
 
+jest.setTimeout(15000)
+
 describe('PACT Verification', () => {
     let app;
 
