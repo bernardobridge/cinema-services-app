@@ -1,7 +1,7 @@
 const path = require('path');
 const pkg = require('../../package.json');
 
-const part = 'part-4';
+const part = 'part-5';
 
 const providerOptions = {
     consumer: `${pkg.name}-${part}`,

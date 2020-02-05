@@ -14,7 +14,7 @@ describe('PACT Verification', () => {
     });
 
     it('should verify expected interactions', () => {
-        const part = 'part-4';
+        const part = 'part-5';
 
         const opts = {
             pactBrokerUrl: process.env.PACT_BROKER_URL || 'https://limitless-hamlet-75386.herokuapp.com/',
@@ -23,6 +23,7 @@ describe('PACT Verification', () => {
             provider: `${pkg.name}-${part}`,
             providerBaseUrl: `http://localhost:${process.env.SERVICE_PORT}`,
             providerVersion: `${pkg.version}-${process.env.GIT_COMMIT || process.env.CIRCLE_SHA1 || Date.now()}`,
+            providerVersionTag: [''],
             publishVerificationResult: true,
             stateHandlers: {
                 'screenings service has cinema with cinemaId=5': async () => {

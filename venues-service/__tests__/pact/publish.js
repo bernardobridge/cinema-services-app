@@ -8,7 +8,7 @@ const opts = {
   pactBrokerUsername: process.env.PACT_BROKER_USERNAME || 'admin',
   pactBrokerPassword: process.env.PACT_BROKER_PASSWORD || 'pacty123',
   consumerVersion: `${pkg.version}-${process.env.GIT_COMMIT || process.env.CIRCLE_SHA1 || Date.now()}`,
-  tags: []
+  tags: ['']
 }
 
 publisher.publishPacts(opts)
