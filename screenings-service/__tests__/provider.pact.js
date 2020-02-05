@@ -22,7 +22,7 @@ describe('PACT Verification', () => {
             pactBrokerPassword: process.env.PACT_BROKER_PASSWORD || 'pacty123',
             provider: `${pkg.name}-${part}`,
             providerBaseUrl: `http://localhost:${process.env.SERVICE_PORT}`,
-            providerVersion: '1.1.3',
+            providerVersion: `${pkg.version}-${process.env.GIT_COMMIT || process.env.CIRCLE_SHA1 || Date.now()}`,
             publishVerificationResult: true,
             stateHandlers: {
                 'screenings service has cinema with cinemaId=5': async () => {
